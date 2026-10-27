@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Intranet Platform</title>
+    <meta name="description" content="A comprehensive modern employee intranet dashboard and operational hub for a modern insurance company, designed as a digital workspace, onboarding center, and cross-department request management system." />
+    <meta property="og:title" content="Insurance Intranet Platform" />
+    <meta property="og:description" content="A comprehensive modern employee intranet dashboard and operational hub for a modern insurance company, designed as a digital workspace, onboarding center, and cross-department request management system." />
+    <script>
+      (function() {
+        var NativeWebSocket = window.WebSocket;
+        if (NativeWebSocket) {
+          window.WebSocket = function(url, protocols) {
+            var isViteHmr = false;
+            if (protocols === 'vite-hmr') isViteHmr = true;
+            else if (Array.isArray(protocols) && protocols.indexOf('vite-hmr') !== -1) isViteHmr = true;
+            else if (typeof url === 'string' && (url.includes('token=') || url.includes(':24678'))) isViteHmr = true;
+
+            if (isViteHmr) {
+              var target = new EventTarget();
+              target.binaryType = 'blob';
+              target.readyState = 1;
+              target.url = url;
+              target.protocol = 'vite-hmr';
+              target.send = function() {};
+              target.close = function() { target.readyState = 3; };
+              setTimeout(function() {
+                try {
+                  target.dispatchEvent(new Event('open'));
+                } catch (_) {}
+              }, 0);
+              return target;
+            }
+            return new NativeWebSocket(url, protocols);
+          };
+          window.WebSocket.prototype = NativeWebSocket.prototype;
+          window.WebSocket.CONNECTING = 0;
+          window.WebSocket.OPEN = 1;
+          window.WebSocket.CLOSING = 2;
+          window.WebSocket.CLOSED = 3;
+        }
+
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event.reason;
+          var message = (reason && reason.message) || String(reason || '');
+          var stack = (reason && reason.stack) || '';
+          if (
+            message.includes('WebSocket') ||
+            message.includes('vite:ws') ||
+            stack.includes('@vite/client') ||
+            stack.includes('createWebSocketModuleRunnerTransport')
+          ) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        });
+
+        window.addEventListener('error', function(event) {
+          var message = event.message || '';
+          var filename = event.filename || '';
+          if (
+            message.includes('WebSocket') ||
+            message.includes('vite:ws') ||
+            filename.includes('@vite/client')
+          ) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

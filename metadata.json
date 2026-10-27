@@ -1,0 +1,6 @@
+{
+  "name": "Insurance Intranet Platform",
+  "description": "A comprehensive modern employee intranet dashboard and operational hub for a modern insurance company, designed as a digital workspace, onboarding center, and cross-department request management system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

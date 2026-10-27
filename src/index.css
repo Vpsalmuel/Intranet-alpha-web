@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #1E2D64;
+  --color-brand-orange: #EA580C;
+}
+
+/* Reduced card border stroke width across cards */
+.border.rounded-xl,
+.border.rounded-2xl,
+.border.rounded-3xl,
+.border[class*="rounded-[20px]"],
+.border[class*="rounded-[22px]"],
+.border[class*="rounded-[24px]"],
+[class*="border"][class*="rounded-xl"],
+[class*="border"][class*="rounded-2xl"],
+[class*="border"][class*="rounded-3xl"],
+[class*="border"][class*="rounded-[20px]"],
+[class*="border"][class*="rounded-[22px]"],
+[class*="border"][class*="rounded-[24px]"] {
+  border-width: 0.5px;
+}
+
+/* Reduced stroke width on all navigation icons across the application */
+#app-sidebar svg,
+#app-sidebar svg path,
+#app-sidebar svg line,
+#app-sidebar svg circle,
+#app-sidebar svg polyline,
+#app-sidebar svg rect,
+header svg,
+header svg path,
+header svg line,
+header svg circle,
+header svg polyline,
+header svg rect,
+nav svg,
+nav svg path,
+nav svg line,
+nav svg circle,
+nav svg polyline,
+nav svg rect,
+[role="navigation"] svg,
+[role="navigation"] svg path,
+[role="navigation"] svg line,
+[role="tablist"] svg,
+[role="tablist"] svg path,
+.nav-icon,
+[class*="nav-"] svg {
+  stroke-width: 1.5 !important;
+}
+
